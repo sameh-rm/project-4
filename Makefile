@@ -39,7 +39,7 @@ lint:
 	pylint --disable=R,C,W1203 app.py
 
 run:
-	python app.py
+	python3 app.py
 
 run-cl:
 	circleci local execute
