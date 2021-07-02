@@ -57,7 +57,7 @@ jobs:
           command: |
             cd /bin
             ls -la
-            
+
   test:
     <<: *pythonImage
     steps:
@@ -76,7 +76,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /
+          at: /bin
       - restore_cache:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
@@ -92,7 +92,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /
+          at: /bin
       - restore_cache:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
