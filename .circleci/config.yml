@@ -21,7 +21,7 @@ jobs:
       - run:
           name: create python virtual environment
           working_directory: ~/
-          command: make setup
+          command: sudo make setup
       - run:
           name: installing python dependencies
           command: make install-all
