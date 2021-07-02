@@ -77,6 +77,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: /bin
+      - attach_workspace:
+          at: .
       - activate_venv
       - run:
           name: start app
