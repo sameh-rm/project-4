@@ -9,6 +9,9 @@ setup:
 	# Create python virtualenv & source it
 	# source ~/.devops/bin/activate
 	python3 -m venv ~/.devops
+	cd ~/.devops
+	pwd
+	ls -la
 install:
 	# This should be run from inside a virtualenv
 	pip install --upgrade pip &&\
@@ -40,7 +43,7 @@ lint:
 run:
 	python3 app.py
 
-run:
+run-cl:
 	circleci local execute
 
 all: install lint test
