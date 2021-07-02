@@ -62,9 +62,9 @@ jobs:
       - activate_venv
       - run:
           name: run unit tests
+          working_directory: .
           command: |
             cd ~
-            pwd
             ls -la
             make test
   lint:
@@ -80,10 +80,8 @@ jobs:
       - activate_venv
       - run:
           name: lint project
+          working_directory: .
           command: |
-            cd ~
-            pwd
-            ls -la
             make lint
   
   start:
