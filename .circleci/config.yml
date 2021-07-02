@@ -27,7 +27,7 @@ jobs:
             sudo make setup
       - run:
           name: installing python dependencies
-          command: make install-all
+          command: sudo make install-all
       - persist_to_workspace:
           root: ~/
           paths:
