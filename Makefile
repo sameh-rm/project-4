@@ -27,7 +27,7 @@ install-all: install-minikube install-hadolint
 
 test:
 	# Additional, optional, tests could go here
-	python3 -m pytest -vv  tests/*.py
+	python -m pytest -vv  tests/*.py
 	#python -m pytest --nbval notebook.ipynb
 
 lint:
@@ -39,7 +39,7 @@ lint:
 	pylint --disable=R,C,W1203 app.py
 
 run:
-	python3 app.py
+	python app.py
 
 run-cl:
 	circleci local execute
