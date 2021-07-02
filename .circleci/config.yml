@@ -11,9 +11,8 @@ commands:
           name: source venv
           working_directory: .
           command: |
-            pwd
-            ls -la
             source ./.devops/bin/activate
+            python3 --version
 
 jobs:
   setup_virtual_environment:
