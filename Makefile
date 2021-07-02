@@ -8,6 +8,9 @@
 setup:
 	# Create python virtualenv & source it
 	# source ~/.devops/bin/activate
+	cd ~/
+	pwd
+	ls -la
 	python3 -m venv ~/.devops
 
 install:
