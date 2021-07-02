@@ -107,10 +107,6 @@ jobs:
     <<: *pythonImage
     steps:
       - checkout
-      - restore_cache:
-          keys:
-              - v3-pip-deps-{{ checksum "requirements.txt" }}
-              - v3-pip-deps- 
       - run:
           name: run smoke test create prediction
           command: ./make_prediction.sh
@@ -123,5 +119,5 @@ workflows:
           requires: [setup_virtual_environment]
       - lint:
           requires: [test]
-      - start:
+      - smoke_test:
           requires: [lint]
