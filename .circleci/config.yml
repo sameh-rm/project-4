@@ -48,10 +48,16 @@ jobs:
                 - ~/.devops
 
       - persist_to_workspace:
-          root: /
+          root: /bin
           paths:
-            - bin/hadolint
-            - bin/minikube
+            - hadolint
+            - minikube
+      - run:
+          name: check bin folder
+          command: |
+            cd /bin
+            ls -la
+            
   test:
     <<: *pythonImage
     steps:
