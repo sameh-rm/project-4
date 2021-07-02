@@ -85,7 +85,7 @@ jobs:
             sudo make install-all
             make lint
 
-  start:
+  deploy:
     <<: *pythonImage
     steps:
       - checkout
@@ -94,11 +94,23 @@ jobs:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
               - v3-pip-deps-
       - run:
-          name: start app
+          name: run docker
           command: |
-            source ~/.devops/bin/activate
-            make run
+            ./run_docker.sh
+            ./upload_docker.sh
 
+      - run:
+          name: run kubernetes
+          command: | 
+            ./run_kubernetes.sh
+            
+  smoke_test:
+    - run:
+          name: run smoke test create prediction
+          command: | 
+            ./make_prediction.sh
+            
+         
 workflows:
   udapepole:
     jobs:
