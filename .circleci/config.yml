@@ -3,6 +3,9 @@ version: 2.1
 alpine_image: &pythonImage
   docker:
     - image: circleci/python:3.7
+      environment:
+        TAR_OPTIONS: --no-same-owner
+        
 commands:
   activate_venv:
     description: Activates python virtual environment using source ~/.devops/bin/activate
