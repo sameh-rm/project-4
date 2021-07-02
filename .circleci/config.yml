@@ -96,12 +96,12 @@ jobs:
       - run:
           name: run docker
           command: |
-            ./run_docker.sh
-            ./upload_docker.sh
+            sudo ./run_docker.sh
+            sudo ./upload_docker.sh
 
       - run:
           name: run kubernetes
-          command: ./run_kubernetes.sh
+          command: sudo ./run_kubernetes.sh
             
   smoke_test:
     <<: *pythonImage
