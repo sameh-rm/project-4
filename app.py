@@ -14,7 +14,7 @@ LOG.setLevel(logging.INFO)
 def scale(payload):
     """Scales Payload"""
     
-    LOG.info(f"Scaling Payload: \n{payload}")
+    LOG.info("Scaling Payload: \n%s" %payload)
     scaler = StandardScaler().fit(payload.astype(float))
     scaled_adhoc_predict = scaler.transform(payload.astype(float))
     return scaled_adhoc_predict
@@ -56,16 +56,16 @@ def predict():
     
     # Logging the input payload
     json_payload = request.json
-    LOG.info(f"JSON payload: \n{json_payload}")
+    LOG.info("JSON payload: \n%s" %json_payload)
     inference_payload = pd.DataFrame(json_payload)
-    LOG.info(f"Inference payload DataFrame: \n{inference_payload}")
+    LOG.info("Inference payload DataFrame: %s" %json_payload)
     # scale the input
     scaled_payload = scale(inference_payload)
     # load pretrained model as clf
     clf = joblib.load("./model_data/boston_housing_prediction.joblib")
     # get an output prediction from the pretrained model, clf
     prediction = list(clf.predict(scaled_payload))
-    LOG.info(f"Prediction: \n{prediction}")
+    LOG.info(f"Prediction: \n%s"%prediction)
     # TO DO:  Log the output prediction value
     return jsonify({'prediction': prediction})
 
