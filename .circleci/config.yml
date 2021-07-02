@@ -32,6 +32,7 @@ jobs:
             pwd
             ls -la
             make setup
+      - activate_venv
       - run:
           name: installing python dependencies
           command: make install
