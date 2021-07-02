@@ -97,7 +97,7 @@ jobs:
           name: start app
           command: |
             source ~/.devops/bin/activate
-            make run
+            sudo make run
 
 workflows:
   udapepole:
