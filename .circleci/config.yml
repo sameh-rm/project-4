@@ -105,12 +105,18 @@ jobs:
             ./run_kubernetes.sh
             
   smoke_test:
-    - run:
-        name: run smoke test create prediction
-        command: | 
-          ./make_prediction.sh
+    <<: *pythonImage
+    steps:
+      - checkout:
+      - restore_cache:
+          keys:
+              - v3-pip-deps-{{ checksum "requirements.txt" }}
+              - v3-pip-deps- 
+      - run:
+          name: run smoke test create prediction
+          command: | 
+            ./make_prediction.sh
             
-         
 workflows:
   udapepole:
     jobs:
