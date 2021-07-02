@@ -67,7 +67,6 @@ jobs:
           command: |
             source ~/.devops/bin/activate
             pip freeze
-            make test
   lint:
     <<: *pythonImage
     steps:
