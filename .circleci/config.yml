@@ -81,7 +81,7 @@ jobs:
             cd /
             pwd & ls -la
             source ~/.devops/bin/activate
-            make lint
+            sudo make lint
 
   start:
     <<: *pythonImage
