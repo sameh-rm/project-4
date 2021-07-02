@@ -1,0 +1,83 @@
+version: 2.1
+
+alpine_image: &alpineImage
+  docker:
+    - image: python:3.9.0-alpine
+commands:
+  activate_venv:
+    description: Activates python virtual environment using source ~/.devops/bin/activate
+    steps:
+      - run:
+          name: source venv
+          working_directory: ~/
+          command: |
+            source ~/.devops/bin/activate
+
+jobs:
+  setup_virtual_environment:
+    <<: *alpineImage
+    steps:
+      - checkout
+      - run:
+          name: create python virtual environment
+          working_directory: ~/
+          command: sudo make setup
+      - run:
+          name: installing python dependencies
+          command: sudo make install-all
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - .devops
+      - persist_to_workspace:
+          root: /bin
+          paths:
+            - hadolint
+            - minikube
+  test:
+    <<: *alpineImage
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - activate_venv
+      - run:
+          name: run unit tests
+          working_directory: .
+          command: make test
+  lint:
+    <<: *alpineImage
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /bin
+      - attach_workspace:
+          at: ~/
+      - activate_venv
+      - run:
+          name: lint project
+          working_directory: .
+          command: sudo make lint
+  
+  start:
+    <<: *alpineImage
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /bin
+      - activate_venv
+      - run:
+          name: start app
+          working_directory: .
+          command: make run
+
+workflows:
+  udapepole:
+    jobs:
+      - setup_virtual_environment
+      - test:
+          requires: [setup_virtual_environment]
+      - lint:
+          requires: [setup_virtual_environment]
+      - start:
+          requires: [setup_virtual_environment]
