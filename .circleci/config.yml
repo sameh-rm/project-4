@@ -11,8 +11,8 @@ commands:
           name: source venv
           command: |
             source ~/.devops/bin/activate
-            pip3 freeze
-
+            ls -la
+            pwd
 jobs:
   setup_virtual_environment:
     <<: *pythonImage
