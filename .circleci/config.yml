@@ -97,7 +97,7 @@ jobs:
           name: start app
           command: |
             source ~/.devops/bin/activate
-            python3 app.py
+            make run
 
 workflows:
   udapepole:
