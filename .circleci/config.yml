@@ -83,7 +83,7 @@ jobs:
           command: |
             source ~/.devops/bin/activate
             sudo make install-all
-            sudo make lint
+            make lint
 
   start:
     <<: *pythonImage
