@@ -33,6 +33,7 @@ jobs:
           name: installing python dependencies
           command: |
             source ~/.devops/bin/activate
+            pip freeze
             make install
 
       - run:
@@ -65,6 +66,7 @@ jobs:
           working_directory: .
           command: |
             source ~/.devops/bin/activate
+            pip freeze
             make test
   lint:
     <<: *pythonImage
@@ -81,6 +83,7 @@ jobs:
           working_directory: .
           command: |
             source ~/.devops/bin/activate
+            pip freeze
             make lint
   
   start:
@@ -98,6 +101,7 @@ jobs:
           working_directory: .
           command: |
             source ~/.devops/bin/activate
+            pip freeze
             make run
 
 workflows:
