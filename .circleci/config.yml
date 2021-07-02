@@ -65,6 +65,7 @@ jobs:
           working_directory: .
           command: |
             ls -la
+            pip freeze
             make test
   lint:
     <<: *pythonImage
