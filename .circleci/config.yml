@@ -10,11 +10,7 @@ commands:
       - run:
           name: source venv
           command: |
-            cd ~
-            ls -la
-            pwd
             source ~/.devops/bin/activate
-            pip freeze
 
 jobs:
   setup_virtual_environment:
@@ -23,8 +19,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-              - v1-pip-deps-{{ checksum "requirements.txt" }}
-              - v1-pip-deps-
+              - v2-pip-deps-{{ checksum "requirements.txt" }}
+              - v2-pip-deps-
       - run:
           name: create python virtual environment
           working_directory: .
@@ -45,7 +41,7 @@ jobs:
             sudo make install-all
 
       - save_cache:
-            key: v1-pip-deps-{{ checksum "requirements.txt" }}
+            key: v2-pip-deps-{{ checksum "requirements.txt" }}
             paths:
                 - ~/.devops
 
@@ -60,15 +56,16 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-              - v1-pip-deps-{{ checksum "requirements.txt" }}
-              - v1-pip-deps-
+              - v2-pip-deps-{{ checksum "requirements.txt" }}
+              - v2-pip-deps-
 
       - activate_venv
       - run:
           name: run unit tests
-          working_directory: .
           command: |
-            source ./.devops/bin/activate
+            cd ~
+            pwd
+            ls -la
             make test
   lint:
     <<: *pythonImage
@@ -78,14 +75,15 @@ jobs:
           at: /bin
       - restore_cache:
           keys:
-              - v1-pip-deps-{{ checksum "requirements.txt" }}
-              - v1-pip-deps-
+              - v2-pip-deps-{{ checksum "requirements.txt" }}
+              - v2-pip-deps-
       - activate_venv
       - run:
           name: lint project
-          working_directory: .
           command: |
-            source ./.devops/bin/activate
+            cd ~
+            pwd
+            ls -la
             make lint
   
   start:
@@ -96,8 +94,8 @@ jobs:
           at: /bin
       - restore_cache:
           keys:
-              - v1-pip-deps-{{ checksum "requirements.txt" }}
-              - v1-pip-deps-
+              - v2-pip-deps-{{ checksum "requirements.txt" }}
+              - v2-pip-deps-
       - activate_venv
       - run:
           name: start app
