@@ -10,9 +10,8 @@ setup:
 	# source ~/.devops/bin/activate
 	cd ~/
 	pwd
-	ls -la
 	python3 -m venv ~/.devops
-
+	ls -la
 install:
 	# This should be run from inside a virtualenv
 	pip install --upgrade pip &&\
