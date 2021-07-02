@@ -24,7 +24,7 @@ jobs:
           command: |
             pwd
             ls -la
-            sudo make setup
+            make setup
       - run:
           name: installing python dependencies
           command: make install
