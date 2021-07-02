@@ -57,7 +57,9 @@ jobs:
       - run:
           name: run unit tests
           working_directory: .
-          command: make test
+          command: |
+            source ./.devops/bin/activate
+            make test
   lint:
     <<: *pythonImage
     steps:
@@ -70,7 +72,9 @@ jobs:
       - run:
           name: lint project
           working_directory: .
-          command: make lint
+          command: |
+            source ./.devops/bin/activate
+            make lint
   
   start:
     <<: *pythonImage

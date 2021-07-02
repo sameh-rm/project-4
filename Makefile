@@ -27,7 +27,7 @@ install-all: install-minikube install-hadolint
 
 test:
 	# Additional, optional, tests could go here
-	python -m pytest -vv  tests/*.py
+	python3 -m pytest -vv  tests/*.py
 	#python -m pytest --nbval notebook.ipynb
 
 lint:
