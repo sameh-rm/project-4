@@ -64,7 +64,6 @@ jobs:
           name: run unit tests
           working_directory: .
           command: |
-            cd ~
             ls -la
             make test
   lint:
