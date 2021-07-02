@@ -48,10 +48,10 @@ jobs:
                 - ~/.devops
 
       - persist_to_workspace:
-          root: /bin
+          root: /
           paths:
-            - hadolint
-            - minikube
+            - /bin/hadolint
+            - /bin/minikube
   test:
     <<: *pythonImage
     steps:
@@ -78,8 +78,6 @@ jobs:
       - run:
           name: lint project
           command: |
-            cd /
-            pwd & ls -la
             source ~/.devops/bin/activate
             sudo make lint
 
