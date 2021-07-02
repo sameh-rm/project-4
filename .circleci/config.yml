@@ -32,11 +32,17 @@ jobs:
       - run:
           name: installing hadolint and minikube
           command: sudo make install-all
+      - run:
+          name: installing hadolint and minikube
+          command: |
+            cd ~/
+            pwd
+            ls -la 
 
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/.devops
+            - .devops
       - persist_to_workspace:
           root: /bin
           paths:
