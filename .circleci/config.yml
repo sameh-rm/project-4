@@ -11,7 +11,7 @@ commands:
           name: source venv
           working_directory: .
           command: |
-            source ./.devops/bin/activate
+            source ~/.devops/bin/activate
             pip3 freeze
 
 jobs:
@@ -19,6 +19,10 @@ jobs:
     <<: *pythonImage
     steps:
       - checkout
+      - restore_cache:
+          keys:
+              - v1-pip-deps-{{ checksum "requirements.txt" }}
+              - v1-pip-deps-
       - run:
           name: create python virtual environment
           working_directory: .
@@ -37,10 +41,10 @@ jobs:
             ls -la
             sudo make install-all
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .devops
+        - save_cache:
+              key: v1-pip-deps-{{ checksum "requirements.txt" }}
+              paths:
+                  - ~/.devops
 
       - persist_to_workspace:
           root: /bin
@@ -51,8 +55,11 @@ jobs:
     <<: *pythonImage
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          keys:
+              - v1-pip-deps-{{ checksum "requirements.txt" }}
+              - v1-pip-deps-
+
       - activate_venv
       - run:
           name: run unit tests
@@ -66,8 +73,10 @@ jobs:
       - checkout
       - attach_workspace:
           at: /bin
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          keys:
+              - v1-pip-deps-{{ checksum "requirements.txt" }}
+              - v1-pip-deps-
       - activate_venv
       - run:
           name: lint project
@@ -82,8 +91,10 @@ jobs:
       - checkout
       - attach_workspace:
           at: /bin
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          keys:
+              - v1-pip-deps-{{ checksum "requirements.txt" }}
+              - v1-pip-deps-
       - activate_venv
       - run:
           name: start app
