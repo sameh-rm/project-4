@@ -106,9 +106,9 @@ jobs:
             
   smoke_test:
     - run:
-          name: run smoke test create prediction
-          command: | 
-            ./make_prediction.sh
+        name: run smoke test create prediction
+        command: | 
+          ./make_prediction.sh
             
          
 workflows:
