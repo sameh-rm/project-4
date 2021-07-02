@@ -40,6 +40,7 @@ jobs:
           root: .
           paths:
             - .devops
+
       - persist_to_workspace:
           root: /bin
           paths:
@@ -89,6 +90,6 @@ workflows:
       - test:
           requires: [setup_virtual_environment]
       - lint:
-          requires: [setup_virtual_environment]
+          requires: [test]
       - start:
-          requires: [setup_virtual_environment]
+          requires: [lint]
