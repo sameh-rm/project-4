@@ -88,7 +88,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /bin
+          at: /
       - restore_cache:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
