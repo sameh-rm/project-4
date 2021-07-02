@@ -31,10 +31,13 @@ jobs:
 
       - run:
           name: installing hadolint and minikube
-          command: sudo make install-all
+          command: | 
+            pwd
+            ls -la
+            sudo make install-all
 
       - persist_to_workspace:
-          root: ~/project
+          root: .
           paths:
             - .devops
       - persist_to_workspace:
@@ -47,7 +50,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/project
+          at: .
       - activate_venv
       - run:
           name: run unit tests
@@ -60,7 +63,7 @@ jobs:
       - attach_workspace:
           at: /bin
       - attach_workspace:
-          at: ~/project
+          at: .
       - activate_venv
       - run:
           name: lint project

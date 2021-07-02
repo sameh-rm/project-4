@@ -8,10 +8,7 @@
 setup:
 	# Create python virtualenv & source it
 	# source ~/.devops/bin/activate
-	cd ~/
-	pwd
 	python3 -m venv ~/.devops
-	ls -la
 install:
 	# This should be run from inside a virtualenv
 	pip install --upgrade pip &&\
