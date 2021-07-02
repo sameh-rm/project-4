@@ -1,8 +1,8 @@
 version: 2.1
 
-alpine_image: &alpineImage
+alpine_image: &pythonImage
   docker:
-    - image: python:3.9.0-alpine
+    - image: circleci/python:3.7
 commands:
   activate_venv:
     description: Activates python virtual environment using source ~/.devops/bin/activate
@@ -15,7 +15,7 @@ commands:
 
 jobs:
   setup_virtual_environment:
-    <<: *alpineImage
+    <<: *pythonImage
     steps:
       - checkout
       - run:
@@ -35,7 +35,7 @@ jobs:
             - hadolint
             - minikube
   test:
-    <<: *alpineImage
+    <<: *pythonImage
     steps:
       - checkout
       - attach_workspace:
@@ -46,7 +46,7 @@ jobs:
           working_directory: .
           command: make test
   lint:
-    <<: *alpineImage
+    <<: *pythonImage
     steps:
       - checkout
       - attach_workspace:
@@ -60,7 +60,7 @@ jobs:
           command: make lint
   
   start:
-    <<: *alpineImage
+    <<: *pythonImage
     steps:
       - checkout
       - attach_workspace:
