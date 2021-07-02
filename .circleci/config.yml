@@ -10,10 +10,11 @@ commands:
       - run:
           name: source venv
           command: |
-            pip freeze
+            cd ~
             ls -la
             pwd
             source ~/.devops/bin/activate
+            pip freeze
 
 jobs:
   setup_virtual_environment:
