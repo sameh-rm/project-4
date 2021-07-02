@@ -5,7 +5,7 @@ alpine_image: &pythonImage
     - image: circleci/python:3.7
       environment:
         TAR_OPTIONS: --no-same-owner
-        
+
 commands:
   activate_venv:
     description: Activates python virtual environment using source ~/.devops/bin/activate
@@ -50,11 +50,6 @@ jobs:
             paths:
                 - ~/.devops
 
-      - persist_to_workspace:
-          root: /bin
-          paths:
-            - hadolint
-            - minikube
       - run:
           name: check bin folder
           command: |
@@ -74,12 +69,11 @@ jobs:
           command: |
             source ~/.devops/bin/activate
             make test
+
   lint:
     <<: *pythonImage
     steps:
       - checkout
-      - attach_workspace:
-          at: /bin
       - restore_cache:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
@@ -88,14 +82,13 @@ jobs:
           name: lint project
           command: |
             source ~/.devops/bin/activate
+            sudo make install-all
             sudo make lint
 
   start:
     <<: *pythonImage
     steps:
       - checkout
-      - attach_workspace:
-          at: /bin
       - restore_cache:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
