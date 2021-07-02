@@ -9,7 +9,7 @@ commands:
     steps:
       - run:
           name: source venv
-          working_directory: ~/
+          working_directory: .
           command: |
             pwd
             ls -la
