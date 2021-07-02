@@ -28,10 +28,12 @@ jobs:
             pwd
             ls -la
             make setup
-      - activate_venv
+      # - activate_venv
       - run:
           name: installing python dependencies
-          command: make install
+          command: |
+            source ~/.devops/bin/activate
+            make install
 
       - run:
           name: installing hadolint and minikube
