@@ -41,7 +41,7 @@ lint:
 run:
 	python3 app.py
 
-run-cl:
-    circleci local execute	
+run:
+	circleci local execute
 
 all: install lint test
