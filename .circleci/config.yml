@@ -27,11 +27,16 @@ jobs:
             sudo make setup
       - run:
           name: installing python dependencies
+          command: make install
+
+      - run:
+          name: installing hadolint and minikube
           command: sudo make install-all
+          
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
-            - .devops
+            - ~/.devops
       - persist_to_workspace:
           root: /bin
           paths:
