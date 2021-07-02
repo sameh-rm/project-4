@@ -50,8 +50,8 @@ jobs:
       - persist_to_workspace:
           root: /
           paths:
-            - /bin/hadolint
-            - /bin/minikube
+            - bin/hadolint
+            - bin/minikube
   test:
     <<: *pythonImage
     steps:
