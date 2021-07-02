@@ -58,14 +58,11 @@ jobs:
           keys:
               - v2-pip-deps-{{ checksum "requirements.txt" }}
               - v2-pip-deps-
-
-      - activate_venv
       - run:
           name: run unit tests
           working_directory: .
           command: |
-            ls -la
-            pip freeze
+            source ~/.devops/bin/activate
             make test
   lint:
     <<: *pythonImage
@@ -77,11 +74,11 @@ jobs:
           keys:
               - v2-pip-deps-{{ checksum "requirements.txt" }}
               - v2-pip-deps-
-      - activate_venv
       - run:
           name: lint project
           working_directory: .
           command: |
+            source ~/.devops/bin/activate
             make lint
   
   start:
@@ -94,11 +91,12 @@ jobs:
           keys:
               - v2-pip-deps-{{ checksum "requirements.txt" }}
               - v2-pip-deps-
-      - activate_venv
       - run:
           name: start app
           working_directory: .
-          command: make run
+          command: |
+            source ~/.devops/bin/activate
+            make run
 
 workflows:
   udapepole:
