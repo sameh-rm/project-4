@@ -12,6 +12,7 @@ commands:
           working_directory: ~/
           command: |
             pwd
+            ls -la
             source ./.devops/bin/activate
 
 jobs:
