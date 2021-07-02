@@ -9,7 +9,6 @@ commands:
     steps:
       - run:
           name: source venv
-          working_directory: .
           command: |
             source ~/.devops/bin/activate
             pip3 freeze
