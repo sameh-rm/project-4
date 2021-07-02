@@ -41,10 +41,10 @@ jobs:
             ls -la
             sudo make install-all
 
-        - save_cache:
-              key: v1-pip-deps-{{ checksum "requirements.txt" }}
-              paths:
-                  - ~/.devops
+      - save_cache:
+            key: v1-pip-deps-{{ checksum "requirements.txt" }}
+            paths:
+                - ~/.devops
 
       - persist_to_workspace:
           root: /bin
