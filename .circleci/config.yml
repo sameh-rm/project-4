@@ -11,7 +11,8 @@ commands:
           name: source venv
           working_directory: ~/
           command: |
-            source ~/.devops/bin/activate
+            pwd
+            source ./.devops/bin/activate
 
 jobs:
   setup_virtual_environment:
