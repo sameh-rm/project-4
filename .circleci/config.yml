@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: create python virtual environment
-          working_directory: ~/
+          working_directory: .
           command: sudo make setup
       - run:
           name: installing python dependencies
