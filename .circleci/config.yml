@@ -19,11 +19,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-              - v2-pip-deps-{{ checksum "requirements.txt" }}
-              - v2-pip-deps-
+              - v3-pip-deps-{{ checksum "requirements.txt" }}
+              - v3-pip-deps-
       - run:
           name: create python virtual environment
-          working_directory: .
           command: |
             pwd
             ls -la
@@ -44,7 +43,7 @@ jobs:
             sudo make install-all
 
       - save_cache:
-            key: v2-pip-deps-{{ checksum "requirements.txt" }}
+            key: v3-pip-deps-{{ checksum "requirements.txt" }}
             paths:
                 - ~/.devops
 
@@ -59,14 +58,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-              - v2-pip-deps-{{ checksum "requirements.txt" }}
-              - v2-pip-deps-
+              - v3-pip-deps-{{ checksum "requirements.txt" }}
+              - v3-pip-deps-
       - run:
           name: run unit tests
-          working_directory: .
           command: |
             source ~/.devops/bin/activate
             pip freeze
+            make test
   lint:
     <<: *pythonImage
     steps:
@@ -75,11 +74,10 @@ jobs:
           at: /bin
       - restore_cache:
           keys:
-              - v2-pip-deps-{{ checksum "requirements.txt" }}
-              - v2-pip-deps-
+              - v3-pip-deps-{{ checksum "requirements.txt" }}
+              - v3-pip-deps-
       - run:
           name: lint project
-          working_directory: .
           command: |
             source ~/.devops/bin/activate
             pip freeze
@@ -93,11 +91,10 @@ jobs:
           at: /bin
       - restore_cache:
           keys:
-              - v2-pip-deps-{{ checksum "requirements.txt" }}
-              - v2-pip-deps-
+              - v3-pip-deps-{{ checksum "requirements.txt" }}
+              - v3-pip-deps-
       - run:
           name: start app
-          working_directory: .
           command: |
             source ~/.devops/bin/activate
             pip freeze
