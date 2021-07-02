@@ -64,7 +64,6 @@ jobs:
           name: run unit tests
           command: |
             source ~/.devops/bin/activate
-            pip freeze
             make test
   lint:
     <<: *pythonImage
@@ -79,10 +78,11 @@ jobs:
       - run:
           name: lint project
           command: |
+            cd /
+            pwd & ls -la
             source ~/.devops/bin/activate
-            pip freeze
             make lint
-  
+
   start:
     <<: *pythonImage
     steps:
@@ -97,7 +97,6 @@ jobs:
           name: start app
           command: |
             source ~/.devops/bin/activate
-            pip freeze
             make run
 
 workflows:
