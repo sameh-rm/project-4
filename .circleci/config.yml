@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  kubernetes: circleci/kubernetes@0.12.0
+
 alpine_image: &pythonImage
   docker:
     - image: circleci/python:3.7
@@ -93,6 +96,9 @@ jobs:
           keys:
               - v3-pip-deps-{{ checksum "requirements.txt" }}
               - v3-pip-deps-
+      - setup_remote_docker:
+          version: 19.03.13
+      - kubernetes/install-kubectl
       - run:
           name: run docker
           command: |
@@ -101,7 +107,6 @@ jobs:
             
             chmod +x upload_docker.sh
             ./upload_docker.sh
-
       - run:
           name: run kubernetes
           command: |
