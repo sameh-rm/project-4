@@ -21,10 +21,10 @@ jobs:
       - run:
           name: create python virtual environment
           working_directory: ~/
-          command: sudo make setup
+          command: make setup
       - run:
           name: installing python dependencies
-          command: sudo make install-all
+          command: make install-all
       - persist_to_workspace:
           root: ~/
           paths:
@@ -57,7 +57,7 @@ jobs:
       - run:
           name: lint project
           working_directory: .
-          command: sudo make lint
+          command: make lint
   
   start:
     <<: *alpineImage
