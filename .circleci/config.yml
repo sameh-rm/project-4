@@ -89,7 +89,7 @@ jobs:
             make lint
 
 workflows:
-  udapepole:
+  sklearn:
     jobs:
       - setup_virtual_environment
       - test:
