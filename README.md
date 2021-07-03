@@ -1,4 +1,4 @@
-<include a CircleCI status badge, here>
+[![SKLearn](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/sameh-rm/project-4/79/workflows/8e6cc238-7e63-441d-aae7-9bfa25d9cc52)
 
 ## Project Overview
 
