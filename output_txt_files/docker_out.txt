@@ -12,6 +12,14 @@ Use a production WSGI server instead.
 
 python3 app.py
 
+* Serving Flask app "app" (lazy loading)
+
+* Environment: production
+
+WARNING: Do not use the development server in a production environment.
+
+Use a production WSGI server instead.
+
 
 * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
 
@@ -20,6 +28,39 @@ python3 app.py
 * Debugger is active!
 
 * Debugger PIN: 727-888-033
+
+* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+
+* Restarting with stat
+
+* Debugger is active!
+
+* Debugger PIN: 727-888-033
+
+* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+
+* Restarting with stat
+
+* Debugger is active!
+
+* Debugger PIN: 727-888-033
+
+
+* Debug mode: on
+
+python3 app.py
+
+* Serving Flask app "app" (lazy loading)
+
+* Environment: production
+
+WARNING: Do not use the development server in a production environment.
+
+Use a production WSGI server instead.
+
+* Debug mode: on
+
+python3 app.py
 
 
 * Serving Flask app "app" (lazy loading)
@@ -42,4 +83,33 @@ Use a production WSGI server instead.
 * Debugger is active!
 
 
-* Debugger PIN: 727-888-03
+* Debugger PIN: 727-888-033
+
+
+172.17.0.1 - - [03/Jul/2021 12:59:01] "GET / HTTP/1.1" 200 -
+
+
+172.17.0.1 - - [03/Jul/2021 12:59:02] "GET /favicon.ico HTTP/1.1" 404 -
+
+
+[2021-07-03 12:59:52,181] INFO in app: JSON payload:
+
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+
+
+[2021-07-03 12:59:52,194] INFO in app: Inference payload DataFrame: {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+
+
+[2021-07-03 12:59:52,194] INFO in app: Scaling Payload:
+
+CHAS RM TAX PTRATIO B LSTAT
+
+0 0 6.575 296.0 15.3 396.9 4.98
+
+
+[2021-07-03 12:59:52,467] INFO in app: Prediction:
+
+[20.35373177134412]
+
+
+172.17.0.1 - - [03/Jul/2021 12:59:52] "POST /predict HTTP/1.1" 200 -
