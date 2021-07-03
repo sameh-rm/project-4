@@ -1,1 +1,31 @@
-<paste log output from Kubernetes-mediated prediction, here>
+$ kubectl logs app-54955bbb-jqwt8
+python3 app.py
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 612-277-089
+127.0.0.1 - - [03/Jul/2021 11:33:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2021 11:33:15] "GET /favicon.ico HTTP/1.1" 404 -
+[2021-07-03 11:34:08,786] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-03 11:34:08,790] INFO in app: Inference payload DataFrame: {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-03 11:34:08,790] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-03 11:34:08,963] INFO in app: Prediction:
+[20.35373177134412]
+127.0.0.1 - - [03/Jul/2021 11:34:08] "POST /predict HTTP/1.1" 200 -
+[2021-07-03 11:35:47,678] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-03 11:35:47,682] INFO in app: Inference payload DataFrame: {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-03 11:35:47,682] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-03 11:35:47,756] INFO in app: Prediction:
+[20.35373177134412]
+127.0.0.1 - - [03/Jul/2021 11:35:47] "POST /predict HTTP/1.1" 200 -

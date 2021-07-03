@@ -88,41 +88,6 @@ jobs:
             sudo make install-all
             make lint
 
-  deploy:
-    <<: *pythonImage
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-              - v3-pip-deps-{{ checksum "requirements.txt" }}
-              - v3-pip-deps-
-      - setup_remote_docker:
-          version: 19.03.13
-      - kubernetes/install-kubectl
-      - run:
-          name: run docker
-          command: |
-            chmod +x run_docker.sh
-            ./run_docker.sh
-            
-            chmod +x upload_docker.sh
-            ./upload_docker.sh
-      - run:
-          name: run kubernetes
-          command: |
-            chmod +x upload_docker.sh
-            ./run_kubernetes.sh
-            
-  smoke_test:
-    <<: *pythonImage
-    steps:
-      - checkout
-      - run:
-          name: run smoke test create prediction
-          command: |
-            chmod +x upload_docker.sh
-            ./make_prediction.sh
-            
 workflows:
   udapepole:
     jobs:
@@ -131,7 +96,3 @@ workflows:
           requires: [setup_virtual_environment]
       - lint:
           requires: [test]
-      - deploy:
-          requires: [lint]
-      - smoke_test:
-          requires: [deploy]

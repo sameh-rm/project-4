@@ -24,7 +24,6 @@ def test_predict():
             },
             follow_redirects=True,
         )
-
         assert res.status_code == 200
         assert len(json.loads(res.data).get("prediction", [])) > 0
 

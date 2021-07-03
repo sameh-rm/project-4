@@ -11,7 +11,7 @@ dockerpath=urokai/udacity-cloud-devops-project-4
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login -u urokai
-docker tag api $dockerpath
+docker tag p4 $dockerpath
 # Step 3:
 # Push image to a docker repository
 docker push $dockerpath

@@ -8,6 +8,8 @@ WORKDIR /app
 COPY . app.py /app/
 ## Step 3:
 # Install packages from requirements.txt
+RUN make setup
+RUN /bin/bash -c "source ~/.devops/bin/activate"
 RUN make install
 # hadolint ignore=DL3013
 RUN make install-all

@@ -1,1 +1,45 @@
-<paste log output from Docker prediction, here>
+python3 app.py
+
+* Serving Flask app "app" (lazy loading)
+
+* Environment: production
+
+WARNING: Do not use the development server in a production environment.
+
+Use a production WSGI server instead.
+
+* Debug mode: on
+
+python3 app.py
+
+
+* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+
+* Restarting with stat
+
+* Debugger is active!
+
+* Debugger PIN: 727-888-033
+
+
+* Serving Flask app "app" (lazy loading)
+
+* Environment: production
+
+WARNING: Do not use the development server in a production environment.
+
+Use a production WSGI server instead.
+
+* Debug mode: on
+
+
+* Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+
+
+* Restarting with stat
+
+
+* Debugger is active!
+
+
+* Debugger PIN: 727-888-03
